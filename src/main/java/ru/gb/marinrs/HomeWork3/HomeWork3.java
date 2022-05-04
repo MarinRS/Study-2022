@@ -14,7 +14,7 @@ public class HomeWork3 {
         printArray(5,65);
         maxMin();
         System.out.println(compareLeftRight());
-        replacementValue();
+        replacementValue(new int [] {0,1,2,3,4,5,6},3);
 
     }
 
@@ -136,10 +136,10 @@ public class HomeWork3 {
     (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.
      */
 
-    public static void replacementValue (){
-        int[]value = {0,1,2,3,4,5};
-        int n = -3;
-        int[] newValue = new int[6];
+    public static void replacementValue (int []a, int b){
+        int[]value = a;
+        int n = b;
+        int[] newValue = new int[value.length];
                for (int i = 0; i < value.length ; i++) {
             if (i+n>(value.length-1)){
                 newValue[i+n- value.length]=value[i];
