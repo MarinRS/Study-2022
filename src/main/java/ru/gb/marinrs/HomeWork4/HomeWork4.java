@@ -2,12 +2,15 @@ package ru.gb.marinrs.HomeWork4;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.compile;
 
 public class HomeWork4 {
 
 public static final int WIDTH = 10; //высота
 public static final int HEIGHT = 10; // ширина
-public static final int AMOUNT_MINES = 95; // кол-во мин
+public static final int AMOUNT_MINES = 10; // кол-во мин
 
     public static final int MINE = 1000;
     public static final int EMPTY =0;
@@ -27,6 +30,9 @@ public static final int AMOUNT_MINES = 95; // кол-во мин
 
 
     public static void  main (String[] args) {
+        if (HEIGHT*WIDTH<=AMOUNT_MINES){
+            System.out.println("Игра невозможна. Все ячейки заполнены минами");
+        }
         boolean userWin = play();
         if (userWin) {
             System.out.println("Поздравляю вы выйграли!");
@@ -70,29 +76,33 @@ public static final int AMOUNT_MINES = 95; // кол-во мин
         printBoard(board,moves);
         int row,line;
 
-      /*  System.out.print("Вы хотите установить флаг? введите 1, если хотите");
+    /* System.out.print("Вы хотите установить флаг? введите 1, если хотите");
        String flag = scanner.nextLine();
         int flagCount= Integer.parseInt(flag.trim());
-                if (flagCount==1){
-                    do {System.out.print("Давайте установим флаг: (укажите столбец и строку, например А1");
+
+                    do {
+                        System.out.print("Давайте установим флаг: (укажите столбец и строку, например А1");
                     String move = scanner.nextLine();
                     row = move.charAt(0)-'A';
                     line = move.charAt(1)- '0';
                     if (row<WIDTH && row >=0 && line< HEIGHT && line >=0){
                         break;
                     } System.out.println("Введите координаты внутри игрового поля !");
-                        } while (false);
+                        } while (flagCount!=1);
 
                     moves[line][row]= CELL_FLAG;
-                                    }
-        System.out.println();*/
 
+        System.out.println();
+*/
         while   (true){
             System.out.print("Ваш ход: (укажите столбец и строку, например А1)");
             String move = scanner.nextLine();
-            row = move.charAt(0)-'A';
-            line = move.charAt(1)- '0';
-            if (row<WIDTH && row >=0 && line< HEIGHT && line >=0) {
+           row =move.substring(1)-'A';
+           line=move.substring(1)-'0';
+
+            /* row = move.charAt(0) -'A';
+            line = move.charAt(1) - '0';*/
+            if (row < WIDTH && row >= 0 && line < HEIGHT && line >= 0) {
             break;
             }
             System.out.println("Введите координаты внутри игрового поля !");
@@ -112,8 +122,11 @@ public static final int AMOUNT_MINES = 95; // кол-во мин
 
     for (int i=0;i<HEIGHT;i++){
         System.out.printf("%3d",i);
+
         for (int j=0;j<WIDTH;j++){
+
             if (moves[i][j]== CELL_ClOSE){
+
                 System.out.print("[]");
                 continue;
             }
@@ -180,7 +193,7 @@ public static final int AMOUNT_MINES = 95; // кол-во мин
                             if (k < 0 || k >= HEIGHT || l < 0 || l >= WIDTH) {
                                 continue;
                             }
-                            if (board[k][l] == 1000) {
+                            if (board[k][l] == MINE) {
                                 mineCount++;
                             }
                         }
@@ -197,7 +210,7 @@ public static final int AMOUNT_MINES = 95; // кол-во мин
     public static void printBoardEnd(int[][] board) {
         System.out.print("   ");
         for (char i = 'A';i<'A'+WIDTH;i++){
-            System.out.print(" "+i);
+            System.out.print(" " + i);
         }
         System.out.println();
 
