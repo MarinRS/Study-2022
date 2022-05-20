@@ -3,6 +3,10 @@ package ru.gb.marinrs.HomeWork7;
 import java.util.Scanner;
 
 public class Plate {
+    public int getFood() {
+        return food;
+    }
+
     private int food;
 
     public Plate(int food) {
@@ -10,26 +14,20 @@ public class Plate {
     }
 
     public void decreaseFood(int n) {
-        if (food >n) {
-            food -= n;
-        }  else {
-            System.out.println("В тарелке недостаточно еды. Котик гордый,котик есть не будет;");
-
-        }
-        return;
+        food -= n;
     }
+
     public void info() {
         System.out.println("В тарелке : " + food + " единиц еды;");
-        System.out.println();
+
     }
+
     public void info1() {
-                System.out.println("В тарелке осталось: " + food + " единиц еды;");
+        System.out.println("В тарелке осталось: " + food + " единиц еды;");
         System.out.println();
     }
-   /*public void putFoodInPlate (){
-        Scanner sc = new Scanner(System.in);
-       int food1 = 0;
-        food1 = sc.nextInt(food1);
-        food+=food1;
-    }*/
+
+    public void putFoodInPlate(int x) {
+        food += x;
+    }
 }

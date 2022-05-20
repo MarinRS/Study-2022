@@ -7,6 +7,18 @@ public class Cat {
     private int appetite;
     private boolean satiety;
 
+    public int getAppetite() {
+        return appetite;
+    }
+
+    public boolean isSatiety() {
+        return satiety;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public Cat(String name, int appetite, boolean satiety) {
         this.name = name;
         this.appetite = appetite;
@@ -14,21 +26,18 @@ public class Cat {
     }
 
     public void eat(Plate p) {
-        if (!satiety ) {
-            p.decreaseFood(appetite);
-                    }
 
+        p.decreaseFood(appetite);
     }
-
 
     public void info() {
-        System.out.println("К тарелке подошел кот " + name + " ;");
-        if (satiety) {
-            System.out.println("Сейчас кот " + name + " сыт и не хочет есть;");
-            return;
+        System.out.println();
+        System.out.println("К тарелке подошел кот " + name + ";");
+        if (!satiety) {
+            System.out.println("Сейчас кот " + name + " голоден и хочет съесть " + appetite + " единиц еды;");
+        } else {
+            System.out.println("Кот сыт!");
         }
-        System.out.println("Сейчас кот " + name + " голоден и хочет съесть " + appetite + " единиц еды;");
     }
-
 
 }
