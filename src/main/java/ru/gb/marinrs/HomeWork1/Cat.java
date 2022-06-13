@@ -37,6 +37,6 @@ public class Cat implements Player {
 
     @Override
     public String toString() {
-        return "Кот по имени "+ name;
+        return "Кот --> "+ name;
     }
 }

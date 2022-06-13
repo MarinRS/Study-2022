@@ -8,8 +8,8 @@ public class Treadmill implements Barrier {
     }
 
     @Override
-    public void overcome(Player skills) {
-    skills.run(this);
+    public void overcome(Player player) {
+    player.run(this);
     }
 
     public int getLenght() {

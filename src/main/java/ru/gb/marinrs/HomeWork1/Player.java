@@ -7,9 +7,9 @@ public interface Player {
     default void run(Treadmill treadmill){
         if (isPlay()){
             if (getRunLimit()>=treadmill.getLenght()){
-                System.out.println(this + " успешно преодолел "+ treadmill);
+               // System.out.println(this + " успешно преодолел "+ treadmill);
             }else {
-                System.out.println(this + " не прошел препятствие"+treadmill);
+               // System.out.println(this + " не прошел препятствие"+treadmill);
                 setPlay(false);
             }
         }
@@ -18,9 +18,9 @@ public interface Player {
     default void jump(Wall wall){
         if (isPlay()){
             if (getJumpLimit()>=wall.getHeight()){
-                System.out.println(this + " успешно преодолел "+ wall);
+                //System.out.println(this + " успешно преодолел "+ wall);
             }else {
-                System.out.println(this + " не прошел препятствие");
+               // System.out.println(this + " не прошел препятствие");
                 setPlay(false);
             }
         }

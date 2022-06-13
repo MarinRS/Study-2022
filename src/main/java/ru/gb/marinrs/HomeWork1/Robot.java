@@ -37,6 +37,6 @@ public class Robot implements Player {
 
     @Override
     public String toString() {
-        return "Робот по имени "+ name;
+        return "Робот --> "+ name;
     }
 }

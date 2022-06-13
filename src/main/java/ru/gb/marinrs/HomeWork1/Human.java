@@ -38,6 +38,6 @@ public class Human implements Player {
 
     @Override
     public String toString() {
-        return "Человек по имени " + name;
+        return "Человек --> " + name;
     }
 }
