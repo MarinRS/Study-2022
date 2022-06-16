@@ -1,11 +1,92 @@
 package ru.gb.marinrs;
 
+import ru.gb.marinrs.MyArrayDataException;
+import ru.gb.marinrs.MyArraySizeException;
+
+import static java.lang.Integer.valueOf;
+
 public class Main {
-    public static void  main (String [] args){
-        System.out.println ("Hello world!");
-        System.out.println("Привет мир!!");
-        System.out.println("Шалом православные!!!");
-        System.out.println("Мы русские с нами Бог!!!!");
-        System.out.println("С вербным воскресеньем !!!!!");
+
+    public static void main(String[] args) {
+
+        String[][] stringArray0 = new String[][] {
+                {"5", "g", "3", "4"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "5", "6"},
+                {"1", "2", "4", "8"}
+        };
+        String[][] stringArray1 = new String[][] {
+                {"6", "6", "6", "6"},
+                {"6", "6", "6", "6"},
+                {"6", "6", "6", "6"},
+                {"6", "6", "6", "6"}
+        };
+        String[][] stringArray2 = new String[][] {
+                {"5", "g", "3"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "5", "6"},
+                {"1", "2", "4", "8"}
+        };
+        String[][] stringArray3 = new String[][] {
+                {"1", "2", "3", "4"},
+                {"1", "2", "5", "6"},
+                {"1", "5", "4", "8"},
+                {"0.5", "2", "4", "8"},
+
+        };
+
+        try {
+            System.out.println("Сумма элементов массива равна " + transformAndSum(stringArray0));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e);
+            System.out.println();
+        }
+        try {
+            System.out.println("Сумма элементов массива равна " + transformAndSum(stringArray1));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e);
+            System.out.println();
+        }
+        try {
+            System.out.println("Сумма элементов массива равна " + transformAndSum(stringArray2));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e);
+            System.out.println();
+        }
+        try {
+            System.out.println("Сумма элементов массива равна " + transformAndSum(stringArray3));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e);
+            System.out.println();
+        }
     }
+
+    private static int transformAndSum (String[][] in) throws MyArraySizeException, MyArrayDataException {
+        int arrDim = 4;
+        int sum = 0;
+
+        // Проверяем, что у массива 4 основных измерения
+        if (in.length != 4) {
+            throw new MyArraySizeException(String.format("Размерность массива должна быть %dх%d.", arrDim, arrDim));
+        }
+        // Т.к. размерность вложенных массивов может быть не всегда одинакова, то проверяем, что в каждом из 4-х основных измерений находится массив ровно из 4 элементов
+        for (int i = 0; i < in.length; i++) {
+            if (in[i].length != 4) {
+                throw new MyArraySizeException(String.format("Размерность массива должна быть %dх%d.", arrDim, arrDim));
+            }
+        }
+
+        for (int i = 0; i < in.length; i++) {
+            for (int j = 0; j < in[i].length; j++) {
+                try {
+                    sum += valueOf(in[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException(String.format("Элемент [%d][%d] исходного массива содержит не целое число %s.", i, j, in[i][j]));
+                }
+            }
+        }
+
+        return sum;
+    }
+
 }
