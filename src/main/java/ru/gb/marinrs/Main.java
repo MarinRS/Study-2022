@@ -1,11 +1,12 @@
 package ru.gb.marinrs;
 
+
+import java.io.IOException;
+
+
+
 public class Main {
-    public static void  main (String [] args){
-        System.out.println ("Hello world!");
-        System.out.println("Привет мир!!");
-        System.out.println("Шалом православные!!!");
-        System.out.println("Мы русские с нами Бог!!!!");
-        System.out.println("С вербным воскресеньем !!!!!");
+    public static void main(String[] args) throws IOException {
+        new Chat();
     }
 }
